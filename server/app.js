@@ -23,8 +23,12 @@ const clientPath = path.join(__dirname, '..', 'client');
 app.use('/client', express.static(clientPath));
 
 
-app.get("/", function(req, res) {
-    res.sendFile(path.join(clientPath, 'index.html'));
+// app.get("/", function(req, res) {
+//     res.sendFile(path.join(clientPath, 'index.html'));
+// });
+
+app.get(/^\/(?!api).*/, (req, res) => {
+  res.sendFile(path.join(clientPath, "index.html"));
 });
 
 
